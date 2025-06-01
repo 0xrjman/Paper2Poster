@@ -10,7 +10,7 @@ VENV_DIR = .venv
 PYTHON_INTERPRETER = $(VENV_DIR)/bin/python
 REQUIREMENTS_FILE = requirements.txt
 PYTHON_VERSION = 3.12
-POSTER_PATH ?= "docs/Papers/Demo.pdf" # Default poster path
+PDF_PATH ?= "docs/Papers/Demo.pdf" # Default pdf path
 
 # Phony targets are not files
 .PHONY: all run update-requirements clean setup-env
@@ -32,7 +32,7 @@ setup-env:
 run: list-models setup-env $(PYTHON_INTERPRETER)
 	@echo "👍 Running the application using $(PYTHON_INTERPRETER)..."
 	$(PYTHON_INTERPRETER) -m PosterAgent.new_pipeline \
-		--poster_path="$(POSTER_PATH)" \
+		--poster_path="$(PDF_PATH)" \
 		--model_name_t="claude_sonnet_4" \
 		--model_name_v="claude_sonnet_4" \
 		--poster_width_inches=48 \
