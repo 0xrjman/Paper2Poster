@@ -124,7 +124,7 @@ class OpenRouterModel(OpenAICompatibleModelV2):
             messages, response_format, tools
         )
 
-        self.model_type = 'Qwen/Qwen2.5-72B-Instruct'
+        self.model_type = 'deepseek/deepseek-r1-0528'
 
         response = self._client.chat.completions.create(
             messages=messages,

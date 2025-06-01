@@ -168,7 +168,13 @@ def get_agent_config(model_type):
             'model_platform': ModelPlatformType.OPENROUTER,
             'model_config': OpenRouterConfig().as_dict(),
         }
-    
+    elif model_type == 'deepseek_r1_v2':
+        agent_config = {
+            'model_type': ModelType.DEEPINFRA_DEEPSEEK_R1_V2,
+            'model_platform': ModelPlatformType.OPENROUTER,
+            'model_config': OpenRouterConfig().as_dict(),
+        }
+
     return agent_config
 
 

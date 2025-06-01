@@ -182,6 +182,7 @@ class ModelType(UnifiedModelType, Enum):
 
     DEEPINFRA_QWEN_2_5_72B = 'Qwen/Qwen2.5-72B-Instruct'
     DEEPINFRA_DEEPSEEK_R1 = 'deepseek-ai/DeepSeek-R1'
+    DEEPINFRA_DEEPSEEK_R1_V2 = 'deepseek/deepseek-r1-0528'
     DEEPINFRA_PHI_4_MULTIMODAL = 'microsoft/Phi-4-multimodal-instruct'
     DEEPINFRA_GEMINI_2_FLASH = 'google/gemini-2.0-flash-001'
 
@@ -246,6 +247,7 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.OPENROUTER_QWEN_2_5_VL_72B,
             ModelType.OPENROUTER_QWEN_2_5_VL_7B,
             ModelType.QWEN_2_VL_7B,
+            ModelType.DEEPINFRA_DEEPSEEK_R1_V2,
         }
 
     @property
@@ -559,7 +561,8 @@ class ModelType(UnifiedModelType, Enum):
         }:
             return 100_000
         elif self in {
-            ModelType.DEEPINFRA_DEEPSEEK_R1
+            ModelType.DEEPINFRA_DEEPSEEK_R1,
+            ModelType.DEEPINFRA_DEEPSEEK_R1_V2,
         }:
             return 65_536
         elif self in {
