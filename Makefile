@@ -11,9 +11,11 @@ PYTHON_INTERPRETER = $(VENV_DIR)/bin/python
 REQUIREMENTS_FILE = requirements.txt
 PYTHON_VERSION = 3.12
 PDF_PATH ?= "docs/Papers/Demo.pdf" # Default pdf path
+MODEL_T ?= "gemini_2_5_flash" # Default model for text
+MODEL_V ?= "gpt_4o" # Default model for vision
 
 # Phony targets are not files
-.PHONY: all run update-requirements clean setup-env
+.PHONY: all run update-requirements clean setup-env list-models
 
 # Default target when running 'make'
 all: run
@@ -32,9 +34,9 @@ setup-env:
 run: list-models setup-env $(PYTHON_INTERPRETER)
 	@echo "👍 Running the application using $(PYTHON_INTERPRETER)..."
 	$(PYTHON_INTERPRETER) -m PosterAgent.new_pipeline \
-		--poster_path="$(PDF_PATH)" \
-		--model_name_t="claude_sonnet_4" \
-		--model_name_v="claude_sonnet_4" \
+		--poster_path=$(PDF_PATH) \
+		--model_name_t=$(MODEL_T) \
+		--model_name_v=$(MODEL_V) \
 		--poster_width_inches=48 \
 		--poster_height_inches=36
 
@@ -79,4 +81,7 @@ list-models:
 	@echo "➡️ claude_sonnet_4"
 	@echo "➡️ claude_opus_4"
 	@echo "➡️ deepseek_r1_v2"
+	@echo "➡️ gpt_4o"
+	@echo "➡️ gemini_2_5_pro"
+	@echo "➡️ gemini_2_5_flash"
 	@echo "--------------------------------"

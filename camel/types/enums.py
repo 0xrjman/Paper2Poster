@@ -188,6 +188,9 @@ class ModelType(UnifiedModelType, Enum):
     OPENROUTER_DEEPSEEK_R1_V2 = 'deepseek/deepseek-r1-0528'
     OPENROUTER_CLAUDE_SONNET_4 = "anthropic/claude-sonnet-4"
     OPENROUTER_CLAUDE_OPUS_4 = "anthropic/claude-opus-4"
+    OPENROUTER_OPENAI_GPT_4O = "openai/gpt-4o"
+    OPENROUTER_GEMINI_2_5_PRO = "google/gemini-2.5-pro-preview"
+    OPENROUTER_GEMINI_2_5_FLASH = "google/gemini-2.5-flash-preview-05-20"
 
     def __str__(self):
         return self.value
@@ -242,7 +245,7 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.O3_MINI,
             ModelType.O3,
         }
-    
+
     @property
     def is_openrouter(self) -> bool:
         r"""Returns whether this type of models is served by OpenRouter."""
@@ -253,6 +256,9 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.OPENROUTER_DEEPSEEK_R1_V2,
             ModelType.OPENROUTER_CLAUDE_OPUS_4,
             ModelType.OPENROUTER_CLAUDE_SONNET_4,
+            ModelType.OPENROUTER_OPENAI_GPT_4O,
+            ModelType.OPENROUTER_GEMINI_2_5_PRO,
+            ModelType.OPENROUTER_GEMINI_2_5_FLASH,
         }
 
     @property
@@ -571,6 +577,7 @@ class ModelType(UnifiedModelType, Enum):
             return 65_536
         elif self in {
             ModelType.OPENROUTER_DEEPSEEK_R1_V2,
+            ModelType.OPENROUTER_OPENAI_GPT_4O
         }:
             return 128_000
         elif self in {
@@ -578,6 +585,11 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.OPENROUTER_CLAUDE_SONNET_4,
         }:
             return 200_000
+        elif self in {
+            ModelType.OPENROUTER_GEMINI_2_5_PRO,
+            ModelType.OPENROUTER_GEMINI_2_5_FLASH,
+        }:
+            return 1_048_576
         elif self in {
             ModelType.GPT_4O,
             ModelType.GPT_4O_LATEST,

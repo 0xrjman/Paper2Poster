@@ -174,6 +174,24 @@ def get_agent_config(model_type):
             'model_platform': ModelPlatformType.OPENROUTER,
             'model_config': OpenRouterConfig().as_dict(),
         }
+    elif model_type == 'gpt_4o':
+        agent_config = {
+            'model_type': ModelType.OPENROUTER_OPENAI_GPT_4O,
+            'model_platform': ModelPlatformType.OPENROUTER,
+            'model_config': OpenRouterConfig().as_dict(),
+        }
+    elif model_type == 'gemini_2_5_pro':
+        agent_config = {
+            'model_type': ModelType.OPENROUTER_GEMINI_2_5_PRO,
+            'model_platform': ModelPlatformType.OPENROUTER,
+            'model_config': OpenRouterConfig().as_dict(),
+        }
+    elif model_type == 'gemini_2_5_flash':
+        agent_config = {
+            'model_type': ModelType.OPENROUTER_GEMINI_2_5_FLASH,
+            'model_platform': ModelPlatformType.OPENROUTER,
+            'model_config': OpenRouterConfig().as_dict(),
+        }
 
     return agent_config
 
