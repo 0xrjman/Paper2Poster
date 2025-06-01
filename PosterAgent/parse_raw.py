@@ -35,6 +35,7 @@ pipeline_options = PdfPipelineOptions()
 pipeline_options.images_scale = IMAGE_RESOLUTION_SCALE
 pipeline_options.generate_page_images = True
 pipeline_options.generate_picture_images = True
+pipeline_options.do_formula_enrichment = True
 
 doc_converter = DocumentConverter(
     format_options={

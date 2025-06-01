@@ -320,6 +320,11 @@ def gen_bullet_point_content(args, actor_config, critic_config, agent_modify=Fal
                 if args.ablation_no_commenter:
                     break
                 curr_round += 1
+                # Check if the key exists before trying to access it
+                if bullet_content not in result_json:
+                    print(f"Warning: Key '{bullet_content}' not found in result_json for section. Skipping rendering for this textbox.")
+                    break # Break from the while loop for this textbox
+
                 img = render_textbox(text_arrangement, result_json[bullet_content], tmp_dir)
                 if args.model_name_v.startswith('vllm_qwen') or args.ablation_no_example:
                     critic_msg = BaseMessage.make_user_message(

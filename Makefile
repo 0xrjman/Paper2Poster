@@ -11,8 +11,10 @@ PYTHON_INTERPRETER = $(VENV_DIR)/bin/python
 REQUIREMENTS_FILE = requirements.txt
 PYTHON_VERSION = 3.12
 PDF_PATH ?= "docs/Papers/Demo.pdf" # Default pdf path
-MODEL_T ?= "gemini_2_5_flash" # Default model for text
-MODEL_V ?= "gpt_4o" # Default model for vision
+POSTER_HEIGHT_INCHES ?= 56 # Default poster height in inches
+POSTER_WIDTH_INCHES ?= 48 # Default poster width in inches
+MODEL_T ?= "gemini_2_5_pro" # Default model for text
+MODEL_V ?= "gemini_2_5_pro" # Default model for vision
 
 # Phony targets are not files
 .PHONY: all run update-requirements clean setup-env list-models
@@ -37,8 +39,8 @@ run: list-models setup-env $(PYTHON_INTERPRETER)
 		--poster_path=$(PDF_PATH) \
 		--model_name_t=$(MODEL_T) \
 		--model_name_v=$(MODEL_V) \
-		--poster_width_inches=48 \
-		--poster_height_inches=36
+		--poster_height_inches=$(POSTER_HEIGHT_INCHES) \
+		--poster_width_inches=$(POSTER_WIDTH_INCHES)
 
 # Rule to set up the virtual environment and install dependencies.
 # This target is the path to the Python interpreter within the virtual environment.

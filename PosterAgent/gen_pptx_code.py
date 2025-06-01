@@ -193,15 +193,17 @@ def generate_poster_code(
         all_content = []
         if content is not None:
             for section_content in content:
+                # Check for 'title' key and add its value if present
                 if 'title' in section_content:
                     all_content.append(section_content['title'])
-                if len(section_content) == 2:
+                # Check for 'textbox1' key and add its value if present
+                if 'textbox1' in section_content:
                     all_content.append(section_content['textbox1'])
-                elif len(section_content) == 3:
-                    all_content.append(section_content['textbox1'])
+                # Check for 'textbox2' key and add its value if present
+                if 'textbox2' in section_content:
                     all_content.append(section_content['textbox2'])
-                else:
-                    raise ValueError(f"Unexpected content length: {len(section_content)}")
+                # This revised logic avoids the ValueError by not relying on dict length
+                # and gracefully handles missing keys in section_content.
     
         for i in range(len(text_arrangement_list)):
             t = text_arrangement_list[i]
